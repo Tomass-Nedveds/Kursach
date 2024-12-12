@@ -4,18 +4,11 @@
 struct students {
     int id;
     int age;
-    char name[50];
-    char surname[50];
-    char kurs[50];
-    char path[] = "studenti.txt";
+    char name[20];
+    char surname[20];
+    char kurs[10];
 };
 
-char addStudent(){
-    if (num == 1) {
-            FILE *fp = fopen(path "a");
+char addStudent();
 
-
-        return 0;
-    }
-}
 #endif
