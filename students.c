@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include "students.h"
 
-char *stxt = "data/studenti.txt";
+char *stxt = "studenti.txt";
 
-int addStudent(int answer){
-    if(answer == 1){
-    FILE *fp = fopen(stxt,"a");
+int addStudent(char* name, char* sname, int age, char* course, int id){
+    id++;
+    FILE *fp = fopen(stxt, "a");
 
-    printf("work");
+    fprintf(fp, "%d %s %s %d %s\n", id, name, sname, age, course);
 
     fclose(fp);
     }
-    
-};

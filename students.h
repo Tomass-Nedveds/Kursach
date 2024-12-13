@@ -1,14 +1,14 @@
 #ifndef STUDENTS_H
 #define STUDENTS_H
 
-struct students {
-    int id;
-    int age;
-    char name[20];
-    char surname[20];
-    char kurs[10];
-};
 
-int addStudent();
+int id;
+int age;
+char name[20];
+char sname[20];
+char course[10];
+
+
+int addStudent(char* name, char* sname, int age, char* course, int id);
 
 #endif

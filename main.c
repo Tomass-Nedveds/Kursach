@@ -1,25 +1,23 @@
 #include <stdlib.h>
+#include <string.h>
 #include "students.h"
 
+int id = 0;
 
 int main(int argc, char* argv[]) {
-    char name[50]; 
-    char sname[50];
-    char kurs[50];
-    int age;
 
-    printf("Add\n");
-    printf("View\n");
-    printf("Delete\n");
+    printf("1.Add\n");
+    printf("2.View\n");
+    printf("3.Delete\n");
+    printf("================\n");
 
-    if(strcmp(argv[1], "Add") == 0){
-        const char* name = argv[2];
-        printf("Work");
+    if(strcmp(argv[1], "add") == 0){
+        char* name = argv[2];
+        char* sname = argv[3];
+        int age = atoi(argv[4]);
+        char* course = argv[5];
+        addStudent(name, sname, age, course, id);    
     }
-
-    printf("%s", name);
-
-    addStudent();
 
     return 0;
 

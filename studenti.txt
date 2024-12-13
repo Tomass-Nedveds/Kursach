@@ -1,6 +1,0 @@
-13 Artem Stanko px-23
-5 Pavel Durov px-22
-5 Pavel Durak px-22
-2 Aetem Stanok px-23
-40 Name Surname px-24
-52 Timur FamilijuNeznaju px-24
