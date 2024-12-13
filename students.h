@@ -9,6 +9,6 @@ struct students {
     char kurs[10];
 };
 
-char addStudent();
+int addStudent();
 
 #endif

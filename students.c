@@ -3,12 +3,13 @@
 
 char *stxt = "data/studenti.txt";
 
-void print(){
-    printf("Niga");
-}
-
-char addStudent(){
+int addStudent(int answer){
+    if(answer == 1){
     FILE *fp = fopen(stxt,"a");
 
+    printf("work");
+
+    fclose(fp);
+    }
     
 };
