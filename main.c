@@ -5,7 +5,6 @@
 
 int LastId() {
     FILE *fp = fopen("id.txt", "r");
-    int id = 0;
     if (fp != NULL) {
         fscanf(fp, "%d", &id);
         fclose(fp);
@@ -22,12 +21,13 @@ void saveLastId(int id) {
 }
 
 int main(int argc, char* argv[]) {
-    printf("######################\n");
-    printf("1. Add\n");
-    printf("2. View\n");
-    printf("3. Delete\n");
-    printf("======================\n");
 
+    if (strcmp(argv[1], "view = 0")){
+        printf("######################\n");
+        printf("1. Add\n");
+        printf("2. Delete\n");
+        printf("######################\n");
+    }
 
     if (strcmp(argv[1], "add") == 0) {
         Student student;
