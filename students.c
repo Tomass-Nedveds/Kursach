@@ -1,13 +1,18 @@
 #include <stdio.h>
+#include <string.h>
 #include "students.h"
 
 char *stxt = "studenti.txt";
 
-int addStudent(char* name, char* sname, int age, char* course, int id){
-    id++;
+int addStudent(Student *student) {
+
+    
     FILE *fp = fopen(stxt, "a");
 
-    fprintf(fp, "%d %s %s %d %s\n", id, name, sname, age, course);
+    fprintf(fp, "%d %s %s %d %s\n", student->id, student->name, student->sname, student->age, student->course);
 
     fclose(fp);
-    }
+    printf("Student added\n");
+
+    return 0;
+}
