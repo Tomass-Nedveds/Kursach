@@ -17,6 +17,3 @@ build: $(TARGET)
 
 clean:
 	rm -rf $(TARGET)
-
-run: $(TARGET)
-	$(TARGET)

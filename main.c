@@ -5,10 +5,11 @@
 
 int LastId() {
     FILE *fp = fopen("id.txt", "r");
-    if (fp != NULL) {
-        fscanf(fp, "%d", &id);
-        fclose(fp);
-    }
+    int id = 0;
+    
+    fscanf(fp, "%d", &id);
+    fclose(fp);
+    
     return id;
 }
 
@@ -22,11 +23,12 @@ void saveLastId(int id) {
 
 int main(int argc, char* argv[]) {
 
-    if (strcmp(argv[1], "view = 0")){
+    if (strcmp(argv[1], "view") == 0){
         printf("######################\n");
         printf("1. Add\n");
-        printf("2. Delete\n");
-        printf("######################\n");
+        printf("2. VStudent\n");
+        printf("3. Delete\n");
+        printf("######################\n\n\n");
     }
 
     if (strcmp(argv[1], "add") == 0) {
@@ -41,6 +43,14 @@ int main(int argc, char* argv[]) {
 
         addStudent(&student);
         saveLastId(id);
+    }
+
+    if (strcmp(argv[1], "vstudents") == 0) 
+        viewStudents();
+
+    if (strcmp(argv[1], "delete") == 0) {
+        int DeleteId = atoi(argv[2]);
+        DeleteStudent(DeleteId);
     }
 
     return 0;

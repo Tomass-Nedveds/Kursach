@@ -9,7 +9,10 @@ typedef struct {
     char course[50];
 } Student;
 
-
+void saveLastId(int id);
 int addStudent(Student *student);
+void ViewStudents();
+void DeleteStudent(int id);
+
 
 #endif
