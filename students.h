@@ -13,6 +13,6 @@ void saveLastId(int id);
 int addStudent(Student *student);
 void ViewStudents();
 void DeleteStudent(int id);
-
+void sortStudents(int criterion);
 
 #endif

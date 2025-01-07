@@ -1,19 +1,16 @@
-TARGET = ./main.o
-
 CC = gcc
+CFLAGS = -Wall -Wextra -std=c99
 
-CFLAGS = -Wall -Wextra -std=c11
+SRCS = main.c students.c
+OBJS = $(SRCS:.c=.o)
 
-SRC = main.c students.c
+all: main
 
-.PHONY: all clean build run
+main: $(OBJS)
+	$(CC) $(CFLAGS) -o main $(OBJS)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
-
-all: clean build
-
-build: $(TARGET)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(TARGET)
+	rm -f $(OBJS) main
