@@ -27,7 +27,9 @@ int main(int argc, char* argv[]) {
         printf("######################\n");
         printf("1. Add\n");
         printf("2. VStudents\n");
-        printf("3. Delete\n");;
+        printf("3. Delete\n");
+        printf("4. Sort\n");
+        printf("5. Change\n");
         printf("######################\n\n\n");
     }
 
@@ -48,7 +50,7 @@ int main(int argc, char* argv[]) {
     if (strcmp(argv[1], "vstudents") == 0) 
         viewStudents();
 
-      if (strcmp(argv[1], "delete") == 0) {
+    if (strcmp(argv[1], "delete") == 0) {
         int DeleteId = atoi(argv[2]);
         DeleteStudent(DeleteId);
 
@@ -57,8 +59,16 @@ int main(int argc, char* argv[]) {
         sortStudents(criterion);
     }
 
-    
+    if (strcmp(argv[1], "change") == 0) {
 
+    int studentId = atoi(argv[2]);
+    const char *newName = argv[3];
+    const char *newSname = argv[4];
+    int newAge = atoi(argv[5]);
+    const char *newCourse = argv[6];
+
+    updateStudent(studentId, newName, newSname, newAge, newCourse);
+}
     return 0;
 }
 }

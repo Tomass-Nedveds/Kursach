@@ -88,6 +88,8 @@ void DeleteStudent(int DeleteId) {
     }
 }
 
+
+
     int compareId(const void *a, const void *b) {
         return ((Student *)a)->id - ((Student *)b)->id;
     }
@@ -155,15 +157,12 @@ void DeleteStudent(int DeleteId) {
     for (int i = 0; i < count; i++) {
         printf("%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
     }
+}
 
 
 
     void updateStudent(int studentId, const char *newName, const char *newSname, int newAge, const char *newCourse) {
     FILE *fp = fopen(stxt, "r");
-    if (fp == NULL) {
-        printf("Error opening file\n");
-        return;
-    }
 
     Student students[50];
     int count = 0;
@@ -188,17 +187,9 @@ void DeleteStudent(int DeleteId) {
     }
 
     FILE *new_fp = fopen(stxt, "w");
-    if (new_fp == NULL) {
-        printf("Error writing to file\n");
-        return;
-    }
 
     for (int i = 0; i < count; i++) {
         fprintf(new_fp, "%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
     }
     fclose(new_fp);
-
-    printf("Student with ID %d updated successfully\n", studentId);
-}
-
 }
