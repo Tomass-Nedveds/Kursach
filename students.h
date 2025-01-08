@@ -14,5 +14,6 @@ int addStudent(Student *student);
 void ViewStudents();
 void DeleteStudent(int id);
 void sortStudents(int criterion);
+void updateStudent(int studentId, const char *newName, const char *newSname, int newAge, const char *newCourse);
 
 #endif

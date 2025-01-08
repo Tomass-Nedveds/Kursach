@@ -156,4 +156,49 @@ void DeleteStudent(int DeleteId) {
         printf("%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
     }
 
+
+
+    void updateStudent(int studentId, const char *newName, const char *newSname, int newAge, const char *newCourse) {
+    FILE *fp = fopen(stxt, "r");
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return;
+    }
+
+    Student students[50];
+    int count = 0;
+    int found = 0;
+
+    while (fscanf(fp, "%d %s %s %d %s", &students[count].id, students[count].name, students[count].sname, &students[count].age, students[count].course) == 5) {
+        if (students[count].id == studentId) {
+            found = 1;
+
+            strncpy(students[count].name, newName, sizeof(students[count].name) - 1);
+            strncpy(students[count].sname, newSname, sizeof(students[count].sname) - 1);
+            students[count].age = newAge;
+            strncpy(students[count].course, newCourse, sizeof(students[count].course) - 1);
+        }
+        count++;
+    }
+    fclose(fp);
+
+    if (!found) {
+        printf("Student with ID %d not found\n", studentId);
+        return;
+    }
+
+    FILE *new_fp = fopen(stxt, "w");
+    if (new_fp == NULL) {
+        printf("Error writing to file\n");
+        return;
+    }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(new_fp, "%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
+    }
+    fclose(new_fp);
+
+    printf("Student with ID %d updated successfully\n", studentId);
+}
+
 }
