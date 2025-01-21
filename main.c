@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         printf("3. Delete\n");
         printf("4. Sort\n");
         printf("5. Change\n");
-        printf("######################\n\n\n");
+        printf("######################\n");
     }
 
     if (strcmp(argv[1], "add") == 0) {

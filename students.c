@@ -125,6 +125,7 @@ void DeleteStudent(int DeleteId) {
     switch (criterion) {
         case 1:
             compare = compareId;
+            printf("Invalid sort criterion\n");
             break;
         case 2:
             compare = compareName;
