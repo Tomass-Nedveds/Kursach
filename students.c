@@ -88,29 +88,27 @@ void DeleteStudent(int DeleteId) {
     }
 }
 
+int compareId(const void *a, const void *b) {
+    return ((Student *)a)->id - ((Student *)b)->id;
+}
 
+int compareName(const void *a, const void *b) {
+    return strcmp(((Student *)a)->name, ((Student *)b)->name);
+}
 
-    int compareId(const void *a, const void *b) {
-        return ((Student *)a)->id - ((Student *)b)->id;
-    }
+int compareSname(const void *a, const void *b) {
+    return strcmp(((Student *)a)->sname, ((Student *)b)->sname);
+}
 
-    int compareName(const void *a, const void *b) {
-        return strcmp(((Student *)a)->name, ((Student *)b)->name);
-    }
+int compareAge(const void *a, const void *b) {
+    return ((Student *)a)->age - ((Student *)b)->age;
+}
 
-    int compareSname(const void *a, const void *b) {
-        return strcmp(((Student *)a)->sname, ((Student *)b)->sname);
-    }
+int compareCourse(const void *a, const void *b) {
+    return strcmp(((Student *)a)->course, ((Student *)b)->course);
+}
 
-    int compareAge(const void *a, const void *b) {
-        return ((Student *)a)->age - ((Student *)b)->age;
-    }
-
-    int compareCourse(const void *a, const void *b) {
-        return strcmp(((Student *)a)->course, ((Student *)b)->course);
-    }
-
-    void sortStudents(int criterion) {
+void sortStudents(int criterion) {
     FILE *fp = fopen(stxt, "r");
 
     Student students[100];
@@ -122,30 +120,27 @@ void DeleteStudent(int DeleteId) {
     fclose(fp);
 
     int (*compare)(const void *, const void *) = NULL;
-    switch (criterion) {
-        case 1:
-            compare = compareId;
-            printf("Invalid sort criterion\n");
-            break;
-        case 2:
-            compare = compareName;
-            break;
-        case 3:
-            compare = compareSname;
-            break;
-        case 4:
-            compare = compareAge;
-            break;
-        case 5:
-            compare = compareCourse;
-            break;
+
+    if (criterion == 1) {
+        compare = compareId;
+    } else if (criterion == 2) {
+        compare = compareName;
+    } else if (criterion == 3) {
+        compare = compareSname;
+    } else if (criterion == 4) {
+        compare = compareAge;
+    } else if (criterion == 5) {
+        compare = compareCourse;
+    } else {
+        printf("Invalid sorting criterion\n");
+        return;
     }
 
     qsort(students, count, sizeof(Student), compare);
 
     FILE *new_fp = fopen(stxt, "w");
     if (new_fp == NULL) {
-        printf("Error writing to file\n");
+        perror("Error opening file for writing");
         return;
     }
 
@@ -153,16 +148,9 @@ void DeleteStudent(int DeleteId) {
         fprintf(new_fp, "%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
     }
     fclose(new_fp);
-
-    printf("Sorted students list:\n");
-    for (int i = 0; i < count; i++) {
-        printf("%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
-    }
 }
 
-
-
-    void updateStudent(int studentId, const char *newName, const char *newSname, int newAge, const char *newCourse) {
+void updateStudent(int studentId, const char *newName, const char *newSname, int newAge, const char *newCourse) {
     FILE *fp = fopen(stxt, "r");
 
     Student students[50];

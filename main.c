@@ -53,6 +53,7 @@ int main(int argc, char* argv[]) {
     if (strcmp(argv[1], "delete") == 0) {
         int DeleteId = atoi(argv[2]);
         DeleteStudent(DeleteId);
+    }
 
     if (strcmp(argv[1], "sort") == 0) {
         int criterion = atoi(argv[2]);
@@ -60,15 +61,13 @@ int main(int argc, char* argv[]) {
     }
 
     if (strcmp(argv[1], "change") == 0) {
+        int studentId = atoi(argv[2]);
+        const char *newName = argv[3];
+        const char *newSname = argv[4];
+        int newAge = atoi(argv[5]);
+        const char *newCourse = argv[6];
 
-    int studentId = atoi(argv[2]);
-    const char *newName = argv[3];
-    const char *newSname = argv[4];
-    int newAge = atoi(argv[5]);
-    const char *newCourse = argv[6];
-
-    updateStudent(studentId, newName, newSname, newAge, newCourse);
-}
+        updateStudent(studentId, newName, newSname, newAge, newCourse);
+    }
     return 0;
-}
 }
