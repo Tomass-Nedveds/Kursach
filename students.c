@@ -123,26 +123,23 @@ void sortStudents(int criterion) {
 
     if (criterion == 1) {
         compare = compareId;
-    } else if (criterion == 2) {
+    } 
+    if (criterion == 2) {
         compare = compareName;
-    } else if (criterion == 3) {
-        compare = compareSname;
-    } else if (criterion == 4) {
-        compare = compareAge;
-    } else if (criterion == 5) {
-        compare = compareCourse;
-    } else {
-        printf("Invalid sorting criterion\n");
-        return;
     }
+    if (criterion == 3) {
+        compare = compareSname;
+    }
+    if (criterion == 4) {
+        compare = compareAge;
+    }
+    if (criterion == 5) {
+        compare = compareCourse;
+    } 
 
     qsort(students, count, sizeof(Student), compare);
 
     FILE *new_fp = fopen(stxt, "w");
-    if (new_fp == NULL) {
-        perror("Error opening file for writing");
-        return;
-    }
 
     for (int i = 0; i < count; i++) {
         fprintf(new_fp, "%d %s %s %d %s\n", students[i].id, students[i].name, students[i].sname, students[i].age, students[i].course);
